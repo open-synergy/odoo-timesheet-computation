@@ -4,7 +4,9 @@
 # DEFINISI
 
 USE_MIN_WORK_HOUR = False
+USE_MAX_WORK_HOUR = False
 MIN_WORK_HOUR = 0.0
+MAX_WORK_HOUR = 0.0
 
 
 # PERHITUNGAN (JANGAN DIUBAH)
@@ -20,6 +22,10 @@ def _cari_hari():
     if USE_MIN_WORK_HOUR:
         criteria += [
         ("real_work_hour", ">=", MIN_WORK_HOUR),
+        ]
+    if USE_MAX_WORK_HOUR:
+        criteria += [
+        ("real_work_hour", "<=", MAX_WORK_HOUR),
         ]
     return obj_schedule.search_count(criteria)
 
