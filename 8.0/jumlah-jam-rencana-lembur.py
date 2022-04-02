@@ -6,6 +6,7 @@
 
 USE_MAX_HOUR_PER_OVERTIME = False
 MAX_HOUR_PER_OVERTIME = 0.0
+OVERTIME_TYPE_ID = False
 
 
 # PERHITUNGAN (JANGAN DIUBAH)
@@ -19,6 +20,10 @@ def _cari_jumlah_jam():
         ("sheet_id", "=", sheet.id),
         ("state", "=", "valid"),
     ]
+    if OVERTIME_TYPE_ID:
+        criteria.append(("type_id", "=", OVERTIME_TYPE_ID))
+    else:
+        criteria.append(("type_id", "=", False))
     for ovt in obj_ovt.search(criteria):
         if NOT USE_MAX_HOUR_PER_OVERTIME:
             jumlah_jam += ovt.overtime_hour
