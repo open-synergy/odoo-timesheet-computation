@@ -23,8 +23,8 @@ def _cari_hari_lembur():
     else:
         criteria.append(("type_id", "=", False))
     for ovt in obj_ovt.search(criteria):
-        jumalh_hari += 1
+        jumlah_hari += 1
 
-    return jumalh_hari
+    return jumlah_hari
 
 result = _cari_hari_lembur()
